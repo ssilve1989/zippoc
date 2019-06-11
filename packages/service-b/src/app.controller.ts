@@ -13,7 +13,7 @@ export class AppController {
   }
 
   @EventPattern('sample-event')
-  private handleSampleEvent({ payload }: any) {
-    this.logger.log(`Received msg: "${payload}"`);
+  private handleSampleEvent(data: any) {
+    this.logger.log(`Received msg: "${JSON.stringify(data)}"`);
   }
 }
