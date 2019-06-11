@@ -1,7 +1,4 @@
 import { Module, OnApplicationBootstrap } from '@nestjs/common';
-import { ClientsModule } from '@nestjs/microservices';
-import { Transport } from '@nestjs/common/enums/transport.enum';
-import { ZipkindRedisClient } from '@zippoc/transports';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
