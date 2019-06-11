@@ -1,0 +1,26 @@
+{
+  "name": "zipkin-poc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@nestjs/cli": "^6.5.0",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "lerna": "^3.15.0",
+    "prettier": "^1.18.2",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}
