@@ -1,23 +1,11 @@
 import { Module, OnApplicationBootstrap } from '@nestjs/common';
 import { ClientsModule } from '@nestjs/microservices';
 import { Transport } from '@nestjs/common/enums/transport.enum';
+import { ZipkindRedisClient } from '@zippoc/transports';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 @Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: 'ServiceA',
-        transport: Transport.REDIS,
-        options: {
-          retryAttempts: 5,
-          retryDelay: 3000,
-          url: `redis://localhost:6379`,
-        },
-      },
-    ]),
-  ],
   controllers: [AppController],
   providers: [AppService],
 })

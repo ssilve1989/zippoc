@@ -1,15 +1,17 @@
 import { NestFactory } from '@nestjs/core';
-import { Transport } from '@nestjs/microservices';
+import { ZipkinRedisServer } from '@zippoc/transports';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.createMicroservice(AppModule, {
-    transport: Transport.REDIS,
-    options: {
-      retryDelay: 3000,
+    strategy: new ZipkinRedisServer({
+      host: 'localhost',
+      port: 6379,
       retryAttempts: 5,
-      url: `redis://localhost:6379`
-    }
+      retryDelay: 3000,
+      serviceName: 'local-service-b',
+      url: `redis://localhost:6379`,
+    }),
   });
 
   await app.listenAsync();

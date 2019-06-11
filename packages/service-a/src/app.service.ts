@@ -1,10 +1,22 @@
-import { Injectable, Inject, Logger } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { Injectable, Logger } from '@nestjs/common';
+import { ZipkinRedisClient } from '@zippoc/transports';
 
 @Injectable()
 export class AppService {
   private readonly logger = new Logger(AppService.name);
-  constructor(@Inject('ServiceA') private readonly client: ClientProxy) {}
+  private client: ZipkinRedisClient;
+
+  constructor() {
+    // this.tracer = this.createTracer('local');
+    this.client = new ZipkinRedisClient({
+      serviceName: 'local-service-a',
+      retryAttempts: 5,
+      retryDelay: 3000,
+      url: `redis://localhost:6379`,
+      host: 'localhost',
+      port: 6379,
+    });
+  }
 
   getHello(): string {
     return 'Hello World!';
